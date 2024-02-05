@@ -55,7 +55,6 @@ def pascal(n, k):
             else:
                 elements[(i,j)] = elements[(i-1, j-1)] + elements[(i-1, j)]
     return elements[(n,k)]
-    
 
 class Pascal:
     """
@@ -70,4 +69,18 @@ class Pascal:
     
     """
     def __init__(self):
-        raise NotImplementedError("Q1")
+        self.triangle = []
+    
+    def __call__(self, n, k):        
+        while len(self.triangle) < n+1:
+            i = len(self.triangle)
+            next_row = []
+            for j in range(i+1):
+                if i == j or i == 0 or j == 0:
+                    next_element = 1
+                else:
+                    next_element = self.triangle[i-1][j-1] + self.triangle[i-1][j]
+                next_row.append(next_element)
+            self.triangle.append(next_row)
+        return self.triangle[n][k]
+
