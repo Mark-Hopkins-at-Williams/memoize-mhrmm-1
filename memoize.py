@@ -70,17 +70,15 @@ class Pascal:
     
     """
     def __init__(self):
-        self.triangle = []
+        self.elements = dict()
     
-    def __call__(self, n, k):        
-        while len(self.triangle) < n+1:
-            i = len(self.triangle)
-            next_row = []
+    def __call__(self, n, k):   
+        if (n, k) in self.elements:
+            return self.elements[(n, k)]     
+        for i in range(n+1):
             for j in range(i+1):
                 if i == j or i == 0 or j == 0:
-                    next_element = 1
+                    self.elements[(i,j)] = 1
                 else:
-                    next_element = self.triangle[i-1][j-1] + self.triangle[i-1][j]
-                next_row.append(next_element)
-            self.triangle.append(next_row)
-        return self.triangle[n][k]
+                    self.elements[(i,j)] = self.elements[(i-1, j-1)] + self.elements[(i-1, j)]
+        return self.elements[(n,k)]
