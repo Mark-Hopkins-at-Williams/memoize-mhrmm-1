@@ -55,7 +55,8 @@ def pascal(n, k):
             else:
                 elements[(i,j)] = elements[(i-1, j-1)] + elements[(i-1, j)]
     return elements[(n,k)]
-    
+
+
 
 class Pascal:
     """
@@ -84,3 +85,4 @@ class Pascal:
                 next_row.append(next_element)
             self.triangle.append(next_row)
         return self.triangle[n][k]
+
