@@ -70,15 +70,16 @@ class Pascal:
     
     """
     def __init__(self):
-        self.elements = dict()
+        self.elements = []
     
-    def __call__(self, n, k):   
-        if (n, k) in self.elements:
-            return self.elements[(n, k)]     
-        for i in range(n+1):
-            for j in range(i+1):
-                if i == j or i == 0 or j == 0:
-                    self.elements[(i,j)] = 1
-                else:
-                    self.elements[(i,j)] = self.elements[(i-1, j-1)] + self.elements[(i-1, j)]
+    def __call__(self, n, k):
+        current_row = len(self.elements)
+        while current_row < n:
+        if (n, k) not in self.elements:       
+            for i in range(n+1):
+                for j in range(i+1):
+                    if i == j or i == 0 or j == 0:
+                        self.elements[(i,j)] = 1
+                    else:
+                        self.elements[(i,j)] = self.elements[(i-1, j-1)] + self.elements[(i-1, j)]
         return self.elements[(n,k)]
