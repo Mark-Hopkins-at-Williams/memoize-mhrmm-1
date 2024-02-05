@@ -56,8 +56,6 @@ def pascal(n, k):
                 elements[(i,j)] = elements[(i-1, j-1)] + elements[(i-1, j)]
     return elements[(n,k)]
 
-
-
 class Pascal:
     """
     Computes the element in the nth row and kth column of Pascal's triangle.
